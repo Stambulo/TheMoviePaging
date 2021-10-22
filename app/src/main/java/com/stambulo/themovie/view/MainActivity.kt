@@ -1,29 +1,47 @@
 package com.stambulo.themovie.view
 
 import android.os.Bundle
-import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.stambulo.themovie.MovieApplication
 import com.stambulo.themovie.R
+import com.stambulo.themovie.databinding.ActivityMainBinding
 import com.stambulo.themovie.presenter.MainPresenter
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
 import moxy.presenter.InjectPresenter
+import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import javax.inject.Inject
 
-class MainActivity() : MvpAppCompatActivity(R.layout.activity_main), MainView {
+class MainActivity(): MvpAppCompatActivity(R.layout.activity_main), MainView {
 
-    @InjectPresenter
-    lateinit var presenter: MainPresenter
+    @Inject lateinit var navigatorHolder: NavigatorHolder
+    val navigator = SupportAppNavigator(this, supportFragmentManager, R.id.container)
 
-    lateinit var tv: TextView
+    private lateinit var binding: ActivityMainBinding
+
+
+    val presenter: MainPresenter by moxyPresenter {
+        MainPresenter().apply {
+            MovieApplication.instance.appComponent.inject(this)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        tv = findViewById(R.id.tv)
-
-        presenter.requestMovie(88)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        MovieApplication.instance.appComponent.inject(this)
     }
 
-    override fun showMovie(title: String) {
-        tv.text = title
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        navigatorHolder.removeNavigator()
     }
 }

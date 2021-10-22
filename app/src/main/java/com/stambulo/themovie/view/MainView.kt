@@ -8,5 +8,4 @@ import moxy.viewstate.strategy.alias.AddToEndSingle
 
 @StateStrategyType(value = OneExecutionStateStrategy::class)
 interface MainView: MvpView {
-    fun showMovie(title: String)
 }
