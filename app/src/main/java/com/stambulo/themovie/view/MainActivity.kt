@@ -1,38 +1,31 @@
 package com.stambulo.themovie.view
 
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 import com.stambulo.themovie.MovieApplication
 import com.stambulo.themovie.R
 import com.stambulo.themovie.databinding.ActivityMainBinding
-import com.stambulo.themovie.presenter.MainPresenter
-import moxy.MvpAppCompatActivity
-import moxy.ktx.moxyPresenter
-import moxy.presenter.InjectPresenter
+import com.stambulo.themovie.view.navigation.screens.Screens
+import com.stambulo.themovie.viewmodel.MainViewModel
 import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 
-class MainActivity(): MvpAppCompatActivity(R.layout.activity_main), MainView {
+class MainActivity(): AppCompatActivity(R.layout.activity_main){
 
     @Inject lateinit var navigatorHolder: NavigatorHolder
+    @Inject lateinit var router: Router
     val navigator = SupportAppNavigator(this, supportFragmentManager, R.id.container)
 
     private lateinit var binding: ActivityMainBinding
 
-
-    val presenter: MainPresenter by moxyPresenter {
-        MainPresenter().apply {
-            MovieApplication.instance.appComponent.inject(this)
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MovieApplication.instance.appComponent.inject(this)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        MovieApplication.instance.appComponent.inject(this)
+        router.replaceScreen(Screens.MovieListScreen())
     }
 
     override fun onResumeFragments() {
