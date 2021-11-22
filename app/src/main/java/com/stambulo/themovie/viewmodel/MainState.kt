@@ -6,6 +6,6 @@ import retrofit2.Response
 sealed class MainState {
     object Idle : MainState()
     object Loading : MainState()
-    data class Movies(val user: Response<Discover>) : MainState()
+    data class Movies(val movies: Response<Discover>) : MainState()
     data class Error(val error: String?) : MainState()
 }

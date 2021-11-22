@@ -3,7 +3,9 @@ package com.stambulo.themovie.view.image
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 
-class ImageLoader(private val baseURL: String) {
+class ImageLoader() {
+    private val baseURL = "https://api.themoviedb.org/3/"
+
     fun loadInto(url: String, container: ImageView) {
 
         Glide.with(container.context)

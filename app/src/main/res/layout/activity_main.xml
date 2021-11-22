@@ -5,12 +5,6 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Activity"
-        android:textSize="20sp"/>
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

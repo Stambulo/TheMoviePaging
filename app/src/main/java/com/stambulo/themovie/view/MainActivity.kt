@@ -6,7 +6,6 @@ import com.stambulo.themovie.MovieApplication
 import com.stambulo.themovie.R
 import com.stambulo.themovie.databinding.ActivityMainBinding
 import com.stambulo.themovie.view.navigation.screens.Screens
-import com.stambulo.themovie.viewmodel.MainViewModel
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
