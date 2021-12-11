@@ -11,9 +11,10 @@ import ru.terrakok.cicerone.Router
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
 import javax.inject.Inject
 
-class MainActivity(): AppCompatActivity(R.layout.activity_main){
+class MainActivity() : AppCompatActivity(R.layout.activity_main) {
 
     @Inject lateinit var navigatorHolder: NavigatorHolder
+
     @Inject lateinit var router: Router
     val navigator = SupportAppNavigator(this, supportFragmentManager, R.id.container)
 
