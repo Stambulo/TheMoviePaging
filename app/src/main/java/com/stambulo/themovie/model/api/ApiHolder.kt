@@ -5,9 +5,9 @@ import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitBuilder {
+object ApiHolder {
 
     class MovieInterceptor: Interceptor{
         override fun intercept(chain: Interceptor.Chain): Response {
@@ -24,7 +24,7 @@ object RetrofitBuilder {
 
     private fun getRetrofit() = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/")
-        .addConverterFactory(MoshiConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create())
         .client(createOkHttpClient(MovieInterceptor()))
         .build()
 
