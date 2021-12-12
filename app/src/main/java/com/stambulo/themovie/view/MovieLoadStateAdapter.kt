@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.stambulo.themovie.databinding.ItemLoadStateBinding
 
 class MovieLoadStateAdapter(
-    private val retry: () -> Unit
+    private val retry: () -> Unit,
 ) : LoadStateAdapter<MovieLoadStateAdapter.ItemViewHolder>() {
 
     private lateinit var bindingItem: ItemLoadStateBinding

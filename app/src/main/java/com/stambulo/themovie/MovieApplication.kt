@@ -5,11 +5,7 @@ import com.stambulo.themovie.di.AppComponent
 import com.stambulo.themovie.di.DaggerAppComponent
 import com.stambulo.themovie.di.module.AppModule
 
-class MovieApplication: Application() {
-
-    companion object{
-        lateinit var instance: MovieApplication
-    }
+class MovieApplication : Application() {
 
     lateinit var appComponent: AppComponent
         private set
@@ -20,5 +16,9 @@ class MovieApplication: Application() {
         appComponent = DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .build()
+    }
+
+    companion object {
+        lateinit var instance: MovieApplication
     }
 }

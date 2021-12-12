@@ -1,6 +1,6 @@
 package com.stambulo.themovie.model.entity
 
-data class Video (
+data class Video(
     val adult: Boolean,
     val backdrop_path: String,
     val budget: Long,
@@ -20,12 +20,12 @@ data class Video (
     val tagline: String,
     val title: String,
     val video: Boolean,
-    val vote_average: Double
+    val vote_average: Double,
 )
 
-data class ProductionCompany (
+data class ProductionCompany(
     val id: Long,
     val logo_path: String? = null,
     val name: String,
-    val origin_country: String
+    val origin_country: String,
 )

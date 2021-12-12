@@ -6,12 +6,13 @@
         <entry key="..\:/dev/android/Geekbrains/Interview/Lesson2/MoviePaging/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
         <entry key="..\:/dev/android/Geekbrains/Interview/Lesson2/TheMoviePaging/app/src/main/res/layout-v23/fragment_movie_list.xml" value="0.1" />
         <entry key="..\:/dev/android/Geekbrains/Interview/Lesson2/TheMoviePaging/app/src/main/res/layout/activity_main.xml" value="0.28177083333333336" />
-        <entry key="..\:/dev/android/Geekbrains/Interview/Lesson2/TheMoviePaging/app/src/main/res/layout/item_load_state.xml" value="0.1" />
+        <entry key="..\:/dev/android/Geekbrains/Interview/Lesson2/TheMoviePaging/app/src/main/res/layout/fragment_details.xml" value="0.33" />
+        <entry key="..\:/dev/android/Geekbrains/Interview/Lesson2/TheMoviePaging/app/src/main/res/layout/item_load_state.xml" value="0.33" />
         <entry key="..\:/dev/android/Geekbrains/Interview/Lesson2/TheMoviePaging/app/src/main/res/layout/item_video.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -5,23 +5,28 @@ import androidx.paging.PagingState
 import com.stambulo.themovie.model.entity.VideoItem
 import retrofit2.HttpException
 
-class MoviePagingSource(private val api: Repository): PagingSource<Int, VideoItem>() {
+class MoviePagingSource(private val api: Repository) : PagingSource<Int, VideoItem>() {
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, VideoItem> {
-        try {
+        return try {
             val nextPage = params.key ?: 1
             val response = api.getMovies(nextPage)
-            return if (response.isSuccessful) {
+            if (response.isSuccessful) {
                 LoadResult.Page(
                     data = response.body()!!.results,
                     prevKey = if (nextPage == 1) null else response.body()!!.page - 1,
-                    nextKey = if (nextPage > response.body()!!.total_pages) null
-                        else response.body()!!.page + 1
+                    nextKey = if (nextPage > response.body()!!.total_pages) {
+                        null
+                    } else {
+                        response.body()!!.page + 1
+                    },
                 )
             } else {
                 LoadResult.Error(HttpException(response))
             }
-        } catch (e: Exception) { return LoadResult.Error(e) }
+        } catch (e: Exception) {
+            LoadResult.Error(e)
+        }
     }
 
     override fun getRefreshKey(state: PagingState<Int, VideoItem>): Int? {

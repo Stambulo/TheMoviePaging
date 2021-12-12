@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.stambulo.themovie.databinding.ItemVideoBinding
 import com.stambulo.themovie.model.entity.VideoItem
 
-class MoviesAdapter :
+class MoviesAdapter(private var onListItemClickListener: OnListItemClickListener) :
     PagingDataAdapter<VideoItem, MoviesAdapter.ViewHolder>(DataDiffCallback) {
 
     private lateinit var bindingItem: ItemVideoBinding
@@ -30,6 +30,7 @@ class MoviesAdapter :
             if (layoutPosition != RecyclerView.NO_POSITION) {
                 data?.let {
                     with(binding) {
+                        root.setOnClickListener { onListItemClickListener.onItemClick(data) }
                         title.text = data.original_title
                         date.text = data.release_date
                         Glide.with(binding.ivImage.context)
@@ -51,3 +52,5 @@ class MoviesAdapter :
         }
     }
 }
+
+interface OnListItemClickListener { fun onItemClick(data: VideoItem) }

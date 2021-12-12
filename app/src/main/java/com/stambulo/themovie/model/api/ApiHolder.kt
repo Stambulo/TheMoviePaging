@@ -9,13 +9,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiHolder {
 
-    class MovieInterceptor: Interceptor{
+    class MovieInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             return chain.proceed(chain.request())
         }
     }
 
-    private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient{
+    private fun createOkHttpClient(interceptor: Interceptor): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor(interceptor)
         httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
